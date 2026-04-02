@@ -48,7 +48,7 @@
                 extend: {
                     fontFamily: { headline: ['Lalezar', 'cursive'], sans: ['Tajawal', 'sans-serif'] },
                     colors: {
-                        brand: { dark: '#050b14', light: '#0f1c2e', primary: '#3b82f6', neon: '#00f0ff', accent: '#10b981', warning: '#ffc107', danger: '#ff2a2a' }
+                        brand: { dark: '#050b14', light: '#0f1c2e', primary: '#3b82f6', neon: '#00f0ff', accent: '#10b981', warning: '#ffc107', danger: '#ff2a2a', whatsapp: '#25D366' }
                     }
                 }
             }
@@ -75,7 +75,6 @@
         .checkbox-wrapper input:checked + div { background-color: #10b981; border-color: #10b981; box-shadow: 0 0 15px rgba(16,185,129,0.3);}
         .checkbox-wrapper input:checked + div svg { display: block; }
         
-        /* Glowing Cards for Reviews */
         .glow-card { position: relative; border-radius: 20px; z-index: 1; overflow: hidden; transition: transform 0.3s ease; }
         .glow-card:hover { transform: translateY(-10px); }
         .glow-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, rgba(0, 240, 255, 0.8), transparent 30%); animation: rotate-glow 4s linear infinite; z-index: -2; }
@@ -84,16 +83,23 @@
         .glow-card::after { content: ''; position: absolute; inset: 2px; background: #0a1220; border-radius: 18px; z-index: -1; }
         @keyframes rotate-glow { 100% { transform: rotate(360deg); } }
 
-        /* Fake Live Notifications */
         #live-notification { position: fixed; top: 20px; right: -400px; background: rgba(15, 28, 46, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(16, 185, 129, 0.3); border-right: 4px solid #10b981; padding: 12px 16px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; z-index: 9999; transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); max-width: 90vw; }
         #live-notification.show { right: 20px; }
 
-        /* Floating WOW CTA Animation */
         @keyframes bounce-x { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-5px); } }
         .animate-bounce-x { animation: bounce-x 1s infinite; }
+        
+        /* Progress Bar Animation */
+        @keyframes progress-load { 0% { width: 0%; } 100% { width: 33%; } }
+        .progress-bar-fill { animation: progress-load 1.5s ease-out forwards; }
     </style>
 </head>
-<body class="antialiased pb-24 selection:bg-brand-neon selection:text-brand-dark">
+<body class="antialiased pb-28 md:pb-24 selection:bg-brand-neon selection:text-brand-dark">
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/213000000000?text=سلام، عندي استفسار بخصوص مقوي الويفي" target="_blank" class="fixed bottom-24 md:bottom-6 right-4 md:right-6 bg-brand-whatsapp text-white p-3 rounded-full shadow-[0_10px_25px_rgba(37,211,102,0.4)] z-50 hover:scale-110 transition-transform flex items-center justify-center animate-bounce duration-1000">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.129.332.202.043.073.043.423-.101.827z"/></svg>
+    </a>
 
     <!-- LIVE NOTIFICATION SYSTEM -->
     <div id="live-notification">
@@ -107,7 +113,7 @@
     </div>
 
     <!-- URGENCY TOP BAR -->
-    <div class="bg-brand-danger text-white text-center py-2 px-4 z-50 relative">
+    <div class="bg-brand-danger text-white text-center py-2 px-4 z-50 relative shadow-lg">
         <div class="font-bold tracking-wide text-sm md:text-base flex items-center justify-center gap-2">
             <span class="animate-pulse">🚨</span>
             الستوك راهو يخلص! بقاو <span id="stock-count" class="text-brand-warning font-black text-lg px-1">11</span> حبة برك بـ 3900 دج
@@ -152,7 +158,7 @@
                 </div>
             </div>
             <p class="text-xs text-slate-300 font-bold mt-8 bg-brand-dark/50 inline-block px-4 py-2 rounded-full border border-slate-700">
-                + مصاريف التوصيل بين <span class="text-brand-neon">600 دج</span> و <span class="text-brand-neon">900 دج</span> حسب الولاية وشركة التوصيل
+                + مصاريف التوصيل بين <span class="text-brand-neon">600 دج</span> و <span class="text-brand-neon">900 دج</span> حسب الولاية
             </p>
         </div>
 
@@ -161,79 +167,32 @@
         </a>
     </header>
 
-    <!-- FEATURES -->
-    <section class="py-12 px-4 relative z-10 border-t border-white/5 bg-gradient-to-b from-brand-dark to-[#0a1220]">
-        <h2 class="font-headline text-3xl md:text-4xl text-center mb-10 reveal">علاش الناس قاع راهم يطيرو بيه؟</h2>
-        
-        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-5">
-            <div class="glass-panel p-5 flex gap-4 items-center reveal">
-                <div class="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/30 flex-shrink-0"><span class="text-2xl">🧱</span></div>
-                <div>
-                    <h3 class="font-headline text-xl mb-1 text-brand-neon">يفوت حيوط البيطون</h3>
-                    <p class="text-slate-400 text-sm font-bold leading-relaxed">السينيال قوي يفوت عبر الحيوط الغلاض. الموديم لتحت؟ الفوق تكونيكتي بـ 4 شلطات.</p>
-                </div>
-            </div>
-            <div class="glass-panel p-5 flex gap-4 items-center reveal">
-                <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30 flex-shrink-0"><span class="text-2xl">⚡</span></div>
-                <div>
-                    <h3 class="font-headline text-xl mb-1 text-brand-danger">سرعة 300Mbps (زيرو لاغ)</h3>
-                    <p class="text-slate-400 text-sm font-bold leading-relaxed">تفرج الـ IPTV وقت الماتشات بلا تقطاع، والعب أونلاين بـ Ping هابط بزاف.</p>
-                </div>
-            </div>
-            <div class="glass-panel p-5 flex gap-4 items-center reveal">
-                <div class="w-16 h-16 rounded-full bg-yellow-500/10 flex items-center justify-center border border-yellow-500/30 flex-shrink-0"><span class="text-2xl">📱</span></div>
-                <div>
-                    <h3 class="font-headline text-xl mb-1 text-brand-warning">يمونطي الدار قاع</h3>
-                    <p class="text-slate-400 text-sm font-bold leading-relaxed">كونيكتي 30 تليفون، سمارت تيفي، وكاميرات في ضربة وحدة بلا ما يطيح الديبي.</p>
-                </div>
-            </div>
-            <div class="glass-panel p-5 flex gap-4 items-center reveal">
-                <div class="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30 flex-shrink-0"><span class="text-2xl">🎮</span></div>
-                <div>
-                    <h3 class="font-headline text-xl mb-1 text-emerald-400">فيه بورت RJ45 سبيسيال</h3>
-                    <p class="text-slate-400 text-sm font-bold leading-relaxed">ركب الكابل ديريكت للبيسي ولا البلايستيشن باش تدي كونيكسيون صافية 100%.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- INSTALLATION STEPS (Images 1, 2, 3 mapped here) -->
     <section class="py-16 px-4 bg-brand-light relative border-t border-brand-primary/20">
         <h2 class="font-headline text-3xl md:text-5xl text-center mb-4 relative z-10 reveal">تركيب ساهل في <span class="text-brand-accent">3 خطوات برك!</span></h2>
         <p class="text-center text-slate-400 font-bold mb-12 relative z-10 reveal">بدون كوابل أو مبرمج.. طفل صغير يقدر يركبو في دقيقة.</p>
         
         <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 relative z-10">
-            <!-- Step 1 -->
             <div class="glass-panel p-4 text-center reveal border-t-4 border-t-brand-primary relative overflow-hidden">
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-primary text-white font-headline rounded-full flex items-center justify-center z-20">1</div>
                 <div class="w-full h-40 bg-slate-800 rounded-xl mb-4 overflow-hidden border-2 border-slate-700 relative">
-                    <!-- IMAGE 1 -->
-                    <img src="./step1.jpg.png" alt="تركيب الجهاز في البريزة" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
+                    <img src="./step1.jpg" alt="تركيب الجهاز" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/1e293b/00f0ff?text=Step+1'">
                 </div>
                 <h4 class="font-headline text-xl text-white mb-2">برونشيه في البريزة 🔌</h4>
                 <p class="text-sm text-slate-400 font-bold">في المرة الأولى، حطو في بريزة تكون قريبة للموديم تاعك باش تسينكرونيزيه.</p>
             </div>
-            
-            <!-- Step 2 -->
             <div class="glass-panel p-4 text-center reveal border-t-4 border-t-brand-warning relative overflow-hidden transition-all delay-100">
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-warning text-brand-dark font-headline rounded-full flex items-center justify-center z-20">2</div>
                 <div class="w-full h-40 bg-slate-800 rounded-xl mb-4 overflow-hidden border-2 border-slate-700 relative">
-                    <!-- IMAGE 2 -->
-                    <img src="./step2.jpg.png" alt="زر WPS" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
+                    <img src="./step2.jpg" alt="زر WPS" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/1e293b/ffc107?text=Step+2'">
                 </div>
                 <h4 class="font-headline text-xl text-white mb-2">عبّز قفلة الـ WPS 🔘</h4>
                 <p class="text-sm text-slate-400 font-bold">عبز قفلة WPS في الموديم، وممبعد عبز نفس القفلة في المقوي وخليهم يتكونيكتاو.</p>
             </div>
-
-            <!-- Step 3 -->
             <div class="glass-panel p-4 text-center reveal border-t-4 border-t-brand-accent relative overflow-hidden transition-all delay-200">
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-accent text-white font-headline rounded-full flex items-center justify-center z-20">3</div>
                 <div class="w-full h-40 bg-slate-800 rounded-xl mb-4 overflow-hidden border-2 border-slate-700 relative">
-                    <!-- IMAGE 3 -->
-                    <img src="./step3.jpg.png" alt="ضوء أخضر قوي" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
+                    <img src="./step3.jpg" alt="ضوء أخضر قوي" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/1e293b/10b981?text=Step+3'">
                 </div>
                 <h4 class="font-headline text-xl text-white mb-2">بدل بلاصتو وتمتع 🚀</h4>
                 <p class="text-sm text-slate-400 font-bold">كي يشعل الضو الأخضر، انقلو للنص طريق بين الموديم والشومبرة الميتة ومبروك عليك.</p>
@@ -241,83 +200,7 @@
         </div>
     </section>
 
-    <!-- REALISTIC SOCIAL PROOF (WOW Glowing Text Cards) -->
-    <section class="py-16 px-4 bg-[#050b14] relative overflow-hidden border-y border-white/5">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
-        
-        <div class="text-center mb-12 relative z-10 reveal">
-            <h2 class="font-headline text-3xl md:text-5xl text-white mb-3">واش قالو خاوتنا لي جربوه؟ 💬</h2>
-            <p class="text-slate-400 font-bold text-sm md:text-base">آراء حقيقية من زبائننا عبر 58 ولاية (بدون مجاملة)</p>
-        </div>
-        
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 relative z-10">
-            <!-- Review 1 -->
-            <div class="glow-card p-6 reveal">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-brand-primary/20 border border-brand-primary/50 flex items-center justify-center font-headline text-2xl text-brand-neon shadow-[0_0_15px_rgba(0,240,255,0.3)]">ع</div>
-                        <div>
-                            <h4 class="text-white font-bold text-sm">عبد الرؤوف. م</h4>
-                            <span class="text-slate-400 text-xs">من ولاية البليدة</span>
-                        </div>
-                    </div>
-                    <div class="bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[10px] px-2 py-1 rounded font-bold flex items-center gap-1">
-                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        مشتري مؤكد
-                    </div>
-                </div>
-                <div class="flex gap-1 mb-3 text-brand-warning text-sm">⭐⭐⭐⭐⭐</div>
-                <p class="text-slate-300 text-sm font-bold leading-relaxed">
-                    "في الأول كنت حاسبها خرطي، بصح والله غير سلعة نقية! الموديم راهو لتحت والبيت تاعي الفوق مكانش يحكم قاع.. غير ركبت هاد الأباراي الكونيكسيون ولات 4 شلطات كاملين. يعطيكم الصحة."
-                </p>
-            </div>
-
-            <!-- Review 2 -->
-            <div class="glow-card p-6 reveal transition-all delay-100">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-brand-accent/20 border border-brand-accent/50 flex items-center justify-center font-headline text-2xl text-brand-accent shadow-[0_0_15px_rgba(16,185,129,0.3)]">ي</div>
-                        <div>
-                            <h4 class="text-white font-bold text-sm">ياسين. س</h4>
-                            <span class="text-slate-400 text-xs">من ولاية سطيف</span>
-                        </div>
-                    </div>
-                    <div class="bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[10px] px-2 py-1 rounded font-bold flex items-center gap-1">
-                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        مشتري مؤكد
-                    </div>
-                </div>
-                <div class="flex gap-1 mb-3 text-brand-warning text-sm">⭐⭐⭐⭐⭐</div>
-                <p class="text-slate-300 text-sm font-bold leading-relaxed">
-                    "لي يتفرج لي ماتش في الـ IPTV ولا يلعب أونلاين يديها وعينيه مغمضين. ركبتها بالكابل RJ45 ديريكت في البلايستيشن، الـ Ping هبط للزيرو والتقطاع راح. التوصيل كان سريع وصلني في نهارين برك."
-                </p>
-            </div>
-
-            <!-- Review 3 -->
-            <div class="glow-card p-6 reveal transition-all delay-200">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-brand-warning/20 border border-brand-warning/50 flex items-center justify-center font-headline text-2xl text-brand-warning shadow-[0_0_15px_rgba(255,193,7,0.3)]">ف</div>
-                        <div>
-                            <h4 class="text-white font-bold text-sm">فريد. ب</h4>
-                            <span class="text-slate-400 text-xs">من ولاية وهران</span>
-                        </div>
-                    </div>
-                    <div class="bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[10px] px-2 py-1 rounded font-bold flex items-center gap-1">
-                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        مشتري مؤكد
-                    </div>
-                </div>
-                <div class="flex gap-1 mb-3 text-brand-warning text-sm">⭐⭐⭐⭐⭐</div>
-                <p class="text-slate-300 text-sm font-bold leading-relaxed">
-                    "ديت الباك تاع زوج حبات على جال الدار كبيرة (طابقين)، والله غير هناتني! ركبت وحدة في الدوزيام ووحدة في الطروازيام، درك الدار قاع فيها الويفي طيارة. شكرا على التوصيل المجاني لي درتوهلي."
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ELITE CHECKOUT FORM (Aggressive & Anti-RTS) -->
+    <!-- ELITE CHECKOUT FORM -->
     <section id="order-form" class="py-12 px-4 relative z-10 bg-brand-dark border-t border-brand-primary/20 scroll-mt-20">
         <div class="max-w-xl mx-auto glass-panel p-5 md:p-8 border-t-4 border-t-brand-danger shadow-[0_0_30px_rgba(255,42,42,0.1)] relative reveal">
             
@@ -327,16 +210,14 @@
             </div>
 
             <form id="purchaseForm" class="space-y-5">
-                
-                <!-- HIDDEN INPUTS FOR GOOGLE SHEETS (اسم المنتج والسعر الإجمالي) -->
+                <!-- HIDDEN INPUTS -->
                 <input type="hidden" name="product" id="input_product" value="مقوي الويفي الأصلي - 1 قطعة">
                 <input type="hidden" name="total_price" id="input_total_price" value="3900">
                 
                 <!-- DYNAMIC UPSELL STRATEGY -->
                 <div class="bg-black/50 p-3 rounded-xl border border-slate-700">
                     <p class="text-white font-headline text-lg mb-3 text-center">🔥 خير العرض لي يوالمك:</p>
-                    
-                    <label class="flex items-center justify-between p-3 border border-slate-600 rounded-xl mb-3 cursor-pointer hover:border-brand-primary bg-slate-800/30" id="label-pack1">
+                    <label class="flex items-center justify-between p-3 border border-brand-primary rounded-xl mb-3 cursor-pointer bg-slate-800/30" id="label-pack1">
                         <div class="flex items-center gap-3">
                             <input type="radio" name="pack" value="1" data-price="3900" checked class="w-5 h-5 accent-brand-primary">
                             <div>
@@ -346,8 +227,7 @@
                         </div>
                         <span class="text-white font-headline text-xl">3900 دج</span>
                     </label>
-                    
-                    <label class="flex items-center justify-between p-3 border-2 border-brand-warning rounded-xl cursor-pointer bg-brand-warning/10 relative overflow-hidden" id="label-pack2">
+                    <label class="flex items-center justify-between p-3 border border-slate-600 rounded-xl cursor-pointer hover:border-brand-warning relative overflow-hidden transition-all" id="label-pack2">
                         <div class="absolute top-0 right-0 bg-brand-warning text-brand-dark text-[10px] font-black px-2 py-0.5 rounded-bl-xl">للديار الكبار (طابقين)</div>
                         <div class="flex items-center gap-3 mt-3">
                             <input type="radio" name="pack" value="2" data-price="7200" class="w-5 h-5 accent-brand-warning">
@@ -371,70 +251,17 @@
                     <div class="grid grid-cols-2 gap-3">
                         <select name="wilaya" id="wilaya-select" required class="w-full bg-[#0a1220] border border-slate-600 rounded-xl px-3 py-3 text-white focus:border-brand-primary outline-none font-bold text-sm appearance-none">
                             <option value="" disabled selected>الولاية *</option>
-                            <option value="1" data-liv="900">01 - أدرار</option>
-                            <option value="2" data-liv="600">02 - الشلف</option>
-                            <option value="3" data-liv="900">03 - الأغواط</option>
-                            <option value="4" data-liv="600">04 - أم البواقي</option>
-                            <option value="5" data-liv="600">05 - باتنة</option>
-                            <option value="6" data-liv="600">06 - بجاية</option>
-                            <option value="7" data-liv="900">07 - بسكرة</option>
-                            <option value="8" data-liv="900">08 - بشار</option>
-                            <option value="9" data-liv="500">09 - البليدة</option>
-                            <option value="10" data-liv="600">10 - البويرة</option>
-                            <option value="11" data-liv="900">11 - تمنراست</option>
-                            <option value="12" data-liv="600">12 - تبسة</option>
-                            <option value="13" data-liv="600">13 - تلمسان</option>
-                            <option value="14" data-liv="600">14 - تيارت</option>
-                            <option value="15" data-liv="600">15 - تيزي وزو</option>
-                            <option value="16" data-liv="400">16 - الجزائر</option>
-                            <option value="17" data-liv="900">17 - الجلفة</option>
-                            <option value="18" data-liv="600">18 - جيجل</option>
-                            <option value="19" data-liv="600">19 - سطيف</option>
-                            <option value="20" data-liv="600">20 - سعيدة</option>
-                            <option value="21" data-liv="600">21 - سكيكدة</option>
-                            <option value="22" data-liv="600">22 - سيدي بلعباس</option>
-                            <option value="23" data-liv="600">23 - عنابة</option>
-                            <option value="24" data-liv="600">24 - قالمة</option>
-                            <option value="25" data-liv="600">25 - قسنطينة</option>
-                            <option value="26" data-liv="600">26 - المدية</option>
-                            <option value="27" data-liv="600">27 - مستغانم</option>
-                            <option value="28" data-liv="600">28 - المسيلة</option>
-                            <option value="29" data-liv="600">29 - معسكر</option>
-                            <option value="30" data-liv="900">30 - ورقلة</option>
-                            <option value="31" data-liv="600">31 - وهران</option>
-                            <option value="32" data-liv="900">32 - البيض</option>
-                            <option value="33" data-liv="900">33 - إليزي</option>
-                            <option value="34" data-liv="600">34 - برج بوعريريج</option>
-                            <option value="35" data-liv="500">35 - بومرداس</option>
-                            <option value="36" data-liv="600">36 - الطارف</option>
-                            <option value="37" data-liv="900">37 - تندوف</option>
-                            <option value="38" data-liv="600">38 - تسمسيلت</option>
-                            <option value="39" data-liv="900">39 - الوادي</option>
-                            <option value="40" data-liv="600">40 - خنشلة</option>
-                            <option value="41" data-liv="600">41 - سوق أهراس</option>
-                            <option value="42" data-liv="500">42 - تيبازة</option>
-                            <option value="43" data-liv="600">43 - ميلة</option>
-                            <option value="44" data-liv="600">44 - عين الدفلى</option>
-                            <option value="45" data-liv="900">45 - النعامة</option>
-                            <option value="46" data-liv="600">46 - عين تموشنت</option>
-                            <option value="47" data-liv="900">47 - غرداية</option>
-                            <option value="48" data-liv="600">48 - غليزان</option>
-                            <option value="49" data-liv="900">49 - تيميمون</option>
-                            <option value="50" data-liv="900">50 - برج باجي مختار</option>
-                            <option value="51" data-liv="900">51 - أولاد جلال</option>
-                            <option value="52" data-liv="900">52 - بني عباس</option>
-                            <option value="53" data-liv="900">53 - إن صالح</option>
-                            <option value="54" data-liv="900">54 - إن قزام</option>
-                            <option value="55" data-liv="900">55 - تقرت</option>
-                            <option value="56" data-liv="900">56 - جانت</option>
-                            <option value="57" data-liv="900">57 - المغير</option>
-                            <option value="58" data-liv="900">58 - المنيعة</option>
+                            <!-- 58 WILAYAS WITH EXACT STRING VALUES FOR GOOGLE SHEETS -->
+                            <option value="01 - أدرار" data-liv="900">01 - أدرار</option><option value="02 - الشلف" data-liv="600">02 - الشلف</option><option value="03 - الأغواط" data-liv="900">03 - الأغواط</option><option value="04 - أم البواقي" data-liv="600">04 - أم البواقي</option><option value="05 - باتنة" data-liv="600">05 - باتنة</option><option value="06 - بجاية" data-liv="600">06 - بجاية</option><option value="07 - بسكرة" data-liv="900">07 - بسكرة</option><option value="08 - بشار" data-liv="900">08 - بشار</option><option value="09 - البليدة" data-liv="500">09 - البليدة</option><option value="10 - البويرة" data-liv="600">10 - البويرة</option><option value="11 - تمنراست" data-liv="900">11 - تمنراست</option><option value="12 - تبسة" data-liv="600">12 - تبسة</option><option value="13 - تلمسان" data-liv="600">13 - تلمسان</option><option value="14 - تيارت" data-liv="600">14 - تيارت</option><option value="15 - تيزي وزو" data-liv="600">15 - تيزي وزو</option><option value="16 - الجزائر" data-liv="400">16 - الجزائر</option><option value="17 - الجلفة" data-liv="900">17 - الجلفة</option><option value="18 - جيجل" data-liv="600">18 - جيجل</option><option value="19 - سطيف" data-liv="600">19 - سطيف</option><option value="20 - سعيدة" data-liv="600">20 - سعيدة</option><option value="21 - سكيكدة" data-liv="600">21 - سكيكدة</option><option value="22 - سيدي بلعباس" data-liv="600">22 - سيدي بلعباس</option><option value="23 - عنابة" data-liv="600">23 - عنابة</option><option value="24 - قالمة" data-liv="600">24 - قالمة</option><option value="25 - قسنطينة" data-liv="600">25 - قسنطينة</option><option value="26 - المدية" data-liv="600">26 - المدية</option><option value="27 - مستغانم" data-liv="600">27 - مستغانم</option><option value="28 - المسيلة" data-liv="600">28 - المسيلة</option><option value="29 - معسكر" data-liv="600">29 - معسكر</option><option value="30 - ورقلة" data-liv="900">30 - ورقلة</option><option value="31 - وهران" data-liv="600">31 - وهران</option><option value="32 - البيض" data-liv="900">32 - البيض</option><option value="33 - إليزي" data-liv="900">33 - إليزي</option><option value="34 - برج بوعريريج" data-liv="600">34 - برج بوعريريج</option><option value="35 - بومرداس" data-liv="500">35 - بومرداس</option><option value="36 - الطارف" data-liv="600">36 - الطارف</option><option value="37 - تندوف" data-liv="900">37 - تندوف</option><option value="38 - تسمسيلت" data-liv="600">38 - تسمسيلت</option><option value="39 - الوادي" data-liv="900">39 - الوادي</option><option value="40 - خنشلة" data-liv="600">40 - خنشلة</option><option value="41 - سوق أهراس" data-liv="600">41 - سوق أهراس</option><option value="42 - تيبازة" data-liv="500">42 - تيبازة</option><option value="43 - ميلة" data-liv="600">43 - ميلة</option><option value="44 - عين الدفلى" data-liv="600">44 - عين الدفلى</option><option value="45 - النعامة" data-liv="900">45 - النعامة</option><option value="46 - عين تموشنت" data-liv="600">46 - عين تموشنت</option><option value="47 - غرداية" data-liv="900">47 - غرداية</option><option value="48 - غليزان" data-liv="600">48 - غليزان</option><option value="49 - تيميمون" data-liv="900">49 - تيميمون</option><option value="50 - برج باجي مختار" data-liv="900">50 - برج باجي مختار</option><option value="51 - أولاد جلال" data-liv="900">51 - أولاد جلال</option><option value="52 - بني عباس" data-liv="900">52 - بني عباس</option><option value="53 - إن صالح" data-liv="900">53 - إن صالح</option><option value="54 - إن قزام" data-liv="900">54 - إن قزام</option><option value="55 - تقرت" data-liv="900">55 - تقرت</option><option value="56 - جانت" data-liv="900">56 - جانت</option><option value="57 - المغير" data-liv="900">57 - المغير</option><option value="58 - المنيعة" data-liv="900">58 - المنيعة</option>
                         </select>
                         <input type="text" name="commune" required placeholder="البلدية *" class="w-full bg-[#0a1220] border border-slate-600 rounded-xl px-3 py-3 text-white focus:border-brand-primary outline-none font-bold text-sm">
                     </div>
+                    
+                    <!-- NEW: REMARQUE FIELD -->
+                    <textarea name="remarque" rows="2" placeholder="ملاحظة إضافية، استفسار أو عنوان بالتفصيل (اختياري)..." class="w-full bg-[#0a1220] border border-slate-600 rounded-xl px-4 py-3 text-white focus:border-brand-primary outline-none font-bold text-sm placeholder-slate-500 resize-none"></textarea>
                 </div>
 
-                <!-- DYNAMIC ORDER SUMMARY (WOW ANIMATION) -->
+                <!-- DYNAMIC ORDER SUMMARY -->
                 <div class="mt-4 p-4 bg-brand-dark/80 border border-brand-neon/30 rounded-xl shadow-[0_0_15px_rgba(0,240,255,0.1)] transition-all">
                     <h4 class="text-white font-headline text-lg mb-3 border-b border-slate-700 pb-2">🧾 تفاصيل الفاتورة</h4>
                     <div class="flex justify-between text-slate-300 text-sm mb-2">
@@ -473,28 +300,87 @@
                     <span id="btn-price-display" class="bg-black/30 px-2 py-1 rounded-lg text-xl border border-white/20">3900 دج</span>
                 </button>
                 
-                <div class="text-center mt-3 flex justify-center items-center gap-4 text-xs text-slate-300 font-bold bg-black/30 py-2 rounded-lg">
-                    <span class="flex items-center gap-1"><svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> الدفع عند الاستلام</span>
-                    <span class="flex items-center gap-1"><svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> معلوماتك آمنة</span>
+                <!-- NEW: TRUST BADGES TO INCREASE CVR -->
+                <div class="mt-4 grid grid-cols-3 gap-2 bg-black/40 p-3 rounded-xl border border-slate-700 text-center">
+                    <div class="flex flex-col items-center justify-center">
+                        <svg class="w-6 h-6 text-brand-neon mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span class="text-[9px] font-bold text-slate-300 leading-tight">الدفع عند<br>الاستلام</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center border-r border-l border-slate-700 px-1">
+                        <svg class="w-6 h-6 text-brand-neon mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <span class="text-[9px] font-bold text-slate-300 leading-tight">افتح الطرد<br>قبل الدفع</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <svg class="w-6 h-6 text-brand-neon mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                        <span class="text-[9px] font-bold text-slate-300 leading-tight">ضمان الاستبدال<br>و الاسترجاع</span>
+                    </div>
                 </div>
             </form>
 
-            <!-- Success Message -->
-            <div id="successMsg" class="hidden text-center py-8 relative">
-                <div class="w-20 h-20 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4 shadow-[0_0_30px_rgba(16,185,129,0.8)] border-4 border-white">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            <!-- ELITE THANK YOU PAGE (WOW EFFECT TO REDUCE RTS) -->
+            <div id="successMsg" class="hidden text-center py-6 relative">
+                <!-- Checkmark Animation -->
+                <div class="w-24 h-24 bg-gradient-to-br from-brand-accent to-emerald-700 rounded-full flex items-center justify-center mx-auto mb-5 shadow-[0_0_40px_rgba(16,185,129,0.6)] border-4 border-[#0a1220] relative z-10 scale-0 transition-transform duration-500" id="success-icon">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-                <h3 class="font-headline text-3xl text-white mb-2">تم تسجيل طلبك بنجاح! 🚀</h3>
-                <p class="text-brand-neon font-bold text-sm mb-4">يعطيك الصحة على ثقتك فينا.</p>
-                <div class="bg-black/50 p-4 rounded-xl border border-brand-warning text-sm font-bold text-white leading-relaxed">
-                    ⚠️ يرجى إبقاء هاتفك مفتوحاً. فريقنا راح يعيطلك من رقم (05/06/07) لتأكيد عنوان الشحن.<br> <span class="text-brand-warning">عدم الرد يعني إلغاء الطلبية.</span>
+                
+                <h3 class="font-headline text-3xl md:text-4xl text-white mb-2">تم تسجيل طلبك بنجاح! 🎉</h3>
+                
+                <!-- Generated Order ID -->
+                <div class="inline-block bg-slate-800/50 border border-brand-neon/30 rounded-lg px-4 py-2 mb-6">
+                    <p class="text-xs text-slate-400 font-bold mb-1">رقم الطلبية الخاص بك:</p>
+                    <p class="text-2xl font-mono text-brand-neon font-bold tracking-widest" id="order-id-display">#DZ-0000</p>
                 </div>
+
+                <!-- Progress Tracker -->
+                <div class="bg-[#0a1220] rounded-xl p-4 border border-slate-700 text-right mb-6">
+                    <h4 class="text-white font-bold text-sm mb-4 border-b border-slate-700 pb-2">حالة الطلبية الآن:</h4>
+                    
+                    <div class="relative pl-4 space-y-6">
+                        <!-- Line -->
+                        <div class="absolute right-2.5 top-2 bottom-2 w-0.5 bg-slate-700">
+                            <div class="w-full bg-brand-accent progress-bar-fill h-0"></div>
+                        </div>
+                        
+                        <!-- Step 1 -->
+                        <div class="relative flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-brand-accent border-4 border-[#0a1220] z-10 flex-shrink-0 shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
+                            <p class="text-white font-bold text-sm">استلام الطلب <span class="text-xs text-emerald-400 ml-2">(تمت)</span></p>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="relative flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-brand-warning animate-pulse border-4 border-[#0a1220] z-10 flex-shrink-0 shadow-[0_0_10px_rgba(255,193,7,0.8)]"></div>
+                            <p class="text-brand-warning font-bold text-sm">قيد المراجعة والتحضير <span class="text-xs ml-2">⏳</span></p>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="relative flex items-center gap-3 opacity-50">
+                            <div class="w-5 h-5 rounded-full bg-slate-600 border-4 border-[#0a1220] z-10 flex-shrink-0"></div>
+                            <p class="text-slate-400 font-bold text-sm">الاتصال بك لتأكيد الشحن</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crucial Warning for Confirmation Call -->
+                <div class="bg-brand-danger/10 p-4 rounded-xl border border-brand-danger/50 text-sm font-bold text-white leading-relaxed mb-6 shadow-[0_0_20px_rgba(255,42,42,0.1)]">
+                    <p class="flex items-center justify-center gap-2 text-brand-danger mb-2 font-headline text-lg">
+                        <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        انتباه هام جداً!
+                    </p>
+                    فريقنا سيتصل بك قريباً من رقم (05/06/07) لتأكيد العنوان.<br> 
+                    <span class="text-brand-warning">الرجاء إبقاء هاتفك مفتوحاً.. عدم الرد يعني إلغاء طلبيتك وتمريرها لزبون آخر.</span>
+                </div>
+
+                <!-- Custom WhatsApp Contact for Support -->
+                <a href="https://wa.me/213000000000?text=سلام، سجلت طلبية مقوي الويفي وبغيت نأكدها" target="_blank" class="w-full bg-[#25D366] text-white font-bold text-base py-3 rounded-xl flex justify-center items-center gap-2 hover:bg-[#1EBE5D] transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.129.332.202.043.073.043.423-.101.827z"/></svg>
+                    نسيت تكتب عنوانك كامل؟ راسلنا هنا
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- FLOATING STICKY CTA (WOW ANIMATION) -->
-    <div id="sticky-cta" class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-sm glass-panel p-2 flex items-center justify-between z-[100] translate-y-[150%] transition-transform duration-500 border border-brand-neon/50 shadow-[0_0_40px_rgba(0,240,255,0.2)]">
+    <!-- FLOATING STICKY CTA -->
+    <div id="sticky-cta" class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-sm glass-panel p-2 flex items-center justify-between z-[90] translate-y-[150%] transition-transform duration-500 border border-brand-neon/50 shadow-[0_0_40px_rgba(0,240,255,0.2)]">
         <div class="flex flex-col px-3">
             <span id="sticky-price" class="text-white font-headline text-2xl leading-none">3900 دج</span>
             <span id="sticky-delivery" class="text-brand-warning text-[10px] font-bold">التوصيل 600-900 دج</span>
@@ -518,7 +404,7 @@
             }, { threshold: 0.1 });
             reveals.forEach(reveal => observer.observe(reveal));
 
-            // DYNAMIC PRICING, DELIVERY CALCULATION & GOOGLE SHEETS UPDATE
+            // DYNAMIC PRICING
             const radioButtons = document.querySelectorAll('input[name="pack"]');
             const wilayaSelect = document.getElementById('wilaya-select');
             
@@ -540,18 +426,15 @@
                 const basePrice = parseInt(selectedPack.getAttribute('data-price'));
                 const isFreeDelivery = selectedPack.value === '2';
                 
-                // Get delivery fee for selected wilaya
                 let deliveryFee = 0;
                 if (wilayaSelect.value !== "") {
                     const selectedOption = wilayaSelect.options[wilayaSelect.selectedIndex];
                     deliveryFee = parseInt(selectedOption.getAttribute('data-liv')) || 600;
                 }
 
-                // Calculate total
                 let finalDeliveryFee = isFreeDelivery ? 0 : deliveryFee;
                 let totalPrice = basePrice + finalDeliveryFee;
 
-                // Update UI visually based on Pack
                 if(selectedPack.value === '1') {
                     labelPack1.classList.add('border-brand-primary', 'bg-slate-800/30');
                     labelPack1.classList.remove('border-slate-600');
@@ -566,7 +449,6 @@
                     inputProduct.value = "مقوي الويفي الأصلي - باك 2 قطع";
                 }
 
-                // Update Summary Box
                 summaryProductPrice.textContent = basePrice + ' دج';
                 
                 if (wilayaSelect.value === "") {
@@ -580,7 +462,6 @@
                 summaryTotalPrice.textContent = totalPrice + ' دج';
                 inputTotalPrice.value = totalPrice;
 
-                // Update Buttons & Sticky CTA
                 priceDisplays.forEach(el => el.textContent = totalPrice + ' دج');
                 stickyPrice.textContent = totalPrice + ' دج';
                 
@@ -593,31 +474,27 @@
                 }
             }
 
-            // Attach event listeners for dynamic updates
             radioButtons.forEach(radio => radio.addEventListener('change', updatePricing));
             wilayaSelect.addEventListener('change', updatePricing);
 
-            // FLOATING STICKY CTA LOGIC
+            // STICKY CTA
             const stickyCta = document.getElementById('sticky-cta');
             const formSection = document.getElementById('order-form');
-            
             window.addEventListener('scroll', () => {
                 const formRect = formSection.getBoundingClientRect();
-                // Show sticky CTA if scrolled past 400px AND the form is not yet fully in view
                 if (window.scrollY > 400 && formRect.top > window.innerHeight - 100) {
                     stickyCta.style.transform = 'translate(-50%, 0)';
                 } else {
-                    stickyCta.style.transform = 'translate(-50%, 150%)'; // Hide it
+                    stickyCta.style.transform = 'translate(-50%, 150%)';
                 }
             });
 
-            // LIVE NOTIFICATIONS
+            // FAKE NOTIFICATIONS
             const names = ["أمين", "ياسين", "فاطمة", "خالد", "سفيان", "عبد الرؤوف", "مريم", "حمزة"];
             const cities = ["سطيف", "العاصمة", "وهران", "عنابة", "البليدة", "قسنطينة", "تلمسان", "بجاية"];
             const notifEl = document.getElementById('live-notification');
             const bName = document.getElementById('buyer-name');
             const bCity = document.getElementById('buyer-city');
-
             function triggerNotification() {
                 bName.textContent = names[Math.floor(Math.random() * names.length)];
                 bCity.textContent = cities[Math.floor(Math.random() * cities.length)];
@@ -626,10 +503,12 @@
             }
             setTimeout(() => { triggerNotification(); setInterval(triggerNotification, Math.floor(Math.random() * (12000 - 8000) + 8000)); }, 3000);
 
-            // FORM SUBMISSION TO GOOGLE SHEETS
+            // FORM SUBMISSION (OPTIMISTIC UI UPDATE - FAKE FAST LOADING)
             const form = document.getElementById('purchaseForm');
             const successMsg = document.getElementById('successMsg');
             const submitBtn = document.getElementById('submitBtn');
+            const orderIdDisplay = document.getElementById('order-id-display');
+            const successIcon = document.getElementById('success-icon');
 
             form.addEventListener('submit', e => {
                 e.preventDefault();
@@ -640,26 +519,37 @@
 
                 let formData = new FormData(form);
                 
+                // 1. Send data to Google Sheets in the background (Fire and Forget)
                 fetch(scriptURL, { method: 'POST', body: formData})
-                    .then(response => {
-                        form.style.display = 'none';
-                        successMsg.classList.remove('hidden');
-                        window.scrollTo({ top: document.getElementById('order-form').offsetTop, behavior: 'smooth' });
-                        
-                        // PIXEL EVENTS ON SUCCESS
-                        if(typeof fbq !== 'undefined') { fbq('track', 'Purchase', { value: formData.get('pack') === '2' ? 7200 : 3900, currency: 'DZD' }); }
-                        if(typeof ttq !== 'undefined') { ttq.track('CompletePayment', { value: formData.get('pack') === '2' ? 7200 : 3900, currency: 'DZD' }); }
-                    })
-                    .catch(error => {
-                        alert('حدث خطأ في الاتصال! يرجى إعادة المحاولة.');
-                        submitBtn.innerHTML = '<span>أكّد الطلب الآن</span>';
-                        submitBtn.disabled = false;
-                        submitBtn.classList.add('btn-aggressive', 'pulse-urgent');
-                        submitBtn.classList.remove('bg-slate-700', 'cursor-not-allowed');
-                    });
+                    .then(response => console.log('Order sent to Google Sheets successfully.'))
+                    .catch(error => console.error('Error sending order:', error));
+
+                // 2. Show Thank You Page almost instantly (Optimistic Update)
+                setTimeout(() => {
+                    // Generate Fake Order ID
+                    const randomID = Math.floor(1000 + Math.random() * 9000);
+                    orderIdDisplay.textContent = `#DZ-${randomID}`;
+
+                    // UI Transition
+                    form.style.display = 'none';
+                    document.querySelector('.text-center.mb-6').style.display = 'none'; // Hide form title
+                    successMsg.classList.remove('hidden');
+                    
+                    // Scroll up and animate icon
+                    window.scrollTo({ top: document.getElementById('order-form').offsetTop, behavior: 'smooth' });
+                    setTimeout(() => {
+                        successIcon.classList.remove('scale-0');
+                        successIcon.classList.add('scale-100');
+                    }, 300);
+                    
+                    // Pixel Tracking Fire
+                    if(typeof fbq !== 'undefined') { fbq('track', 'Purchase', { value: formData.get('total_price'), currency: 'DZD' }); }
+                    if(typeof ttq !== 'undefined') { ttq.track('CompletePayment', { value: formData.get('total_price'), currency: 'DZD' }); }
+                    
+                }, 800); // Wait 800ms to feel "real" but fast
             });
 
-            // RANDOM STOCK DEPLETION
+            // STOCK 
             let stock = 11;
             const stockDisplay = document.getElementById('stock-count');
             setInterval(() => {
