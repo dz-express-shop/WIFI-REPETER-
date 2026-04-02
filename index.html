@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>مقوي الويفي الأصلي | اخترق حيوط الدار وقوي الكونيكسيون</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Elite Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- ========================================== -->
+    <!-- META PIXEL -->
+    <!-- ========================================== -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '880279101448547'); // ID Pixel ta3ek
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=880279101448547&ev=PageView&noscript=1"/></noscript>
+
+    <!-- ========================================== -->
+    <!-- TIKTOK PIXEL -->
+    <!-- ========================================== -->
+    <script>
+        !function (w, d, t) {
+          w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+          
+          ttq.load('D691NORC77U6HVGGO320'); 
+          ttq.page();
+        }(window, document, 'ttq');
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { headline: ['Lalezar', 'cursive'], sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        brand: { dark: '#050b14', light: '#0f1c2e', primary: '#3b82f6', neon: '#00f0ff', accent: '#10b981', warning: '#ffc107', danger: '#ff2a2a' }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { background-color: #050b14; color: #f8fafc; overflow-x: hidden; scroll-behavior: smooth; }
+        .glass-panel { background: rgba(15, 28, 46, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); transition: all 0.4s ease; }
+        .gradient-text { background: linear-gradient(to left, #00f0ff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-aggressive { background: linear-gradient(135deg, #ff2a2a 0%, #c40000 100%); box-shadow: 0 10px 25px rgba(255, 42, 42, 0.4); text-shadow: 0 2px 4px rgba(0,0,0,0.5); position: relative; overflow: hidden; transition: all 0.2s; }
+        .btn-aggressive::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%); transform: rotate(30deg); animation: shine 3s infinite; }
+        @keyframes shine { 0% { transform: translateX(-100%) rotate(30deg); } 20%, 100% { transform: translateX(100%) rotate(30deg); } }
+        .pulse-urgent { animation: pulse-red 2s infinite; }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(255, 42, 42, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(255, 42, 42, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 42, 42, 0); } }
+        .wifi-radar { position: relative; width: 60px; height: 60px; margin: 0 auto; }
+        .wifi-radar div { position: absolute; border: 4px solid transparent; border-top-color: #00f0ff; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: wifi-pulse 2s infinite; opacity: 0; }
+        .wifi-radar div:nth-child(1) { width: 20px; height: 20px; animation-delay: 0s; border-color: #00f0ff; background: #00f0ff; border-radius: 50%; }
+        .wifi-radar div:nth-child(2) { width: 40px; height: 40px; animation-delay: 0.2s; border-top-color: #00f0ff;}
+        .wifi-radar div:nth-child(3) { width: 60px; height: 60px; animation-delay: 0.4s; border-top-color: #00f0ff;}
+        @keyframes wifi-pulse { 0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .checkbox-wrapper input:checked + div { background-color: #10b981; border-color: #10b981; box-shadow: 0 0 15px rgba(16,185,129,0.3);}
+        .checkbox-wrapper input:checked + div svg { display: block; }
+        
+        /* Glowing Cards for Reviews */
+        .glow-card { position: relative; border-radius: 20px; z-index: 1; overflow: hidden; transition: transform 0.3s ease; }
+        .glow-card:hover { transform: translateY(-10px); }
+        .glow-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, rgba(0, 240, 255, 0.8), transparent 30%); animation: rotate-glow 4s linear infinite; z-index: -2; }
+        .glow-card:nth-child(2)::before { background: conic-gradient(transparent, rgba(16, 185, 129, 0.8), transparent 30%); animation-duration: 5s; animation-direction: reverse; }
+        .glow-card:nth-child(3)::before { background: conic-gradient(transparent, rgba(255, 193, 7, 0.8), transparent 30%); animation-duration: 3.5s; }
+        .glow-card::after { content: ''; position: absolute; inset: 2px; background: #0a1220; border-radius: 18px; z-index: -1; }
+        @keyframes rotate-glow { 100% { transform: rotate(360deg); } }
+
+        /* Fake Live Notifications */
+        #live-notification { position: fixed; top: 20px; right: -400px; background: rgba(15, 28, 46, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(16, 185, 129, 0.3); border-right: 4px solid #10b981; padding: 12px 16px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; z-index: 9999; transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); max-width: 90vw; }
+        #live-notification.show { right: 20px; }
+    </style>
+</head>
+<body class="antialiased pb-24 selection:bg-brand-neon selection:text-brand-dark">
+
+    <!-- LIVE NOTIFICATION SYSTEM -->
+    <div id="live-notification">
+        <div class="relative w-10 h-10 bg-brand-dark rounded-full flex items-center justify-center border border-brand-accent flex-shrink-0">
+            <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        </div>
+        <div>
+            <p class="text-sm font-bold text-white"><span id="buyer-name" class="text-brand-neon">محمد</span> من <span id="buyer-city">وهران</span></p>
+            <p class="text-xs text-slate-300 font-semibold mt-0.5">شرا الجهاز (باك 2 حبات) <span id="buyer-time" class="text-brand-warning text-[10px] ml-1">الآن</span></p>
+        </div>
+    </div>
+
+    <!-- URGENCY TOP BAR -->
+    <div class="bg-brand-danger text-white text-center py-2 px-4 z-50 relative">
+        <div class="font-bold tracking-wide text-sm md:text-base flex items-center justify-center gap-2">
+            <span class="animate-pulse">🚨</span>
+            الستوك راهو يخلص! بقاو <span id="stock-count" class="text-brand-warning font-black text-lg px-1">11</span> حبة برك بـ 3900 دج
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="relative px-4 pt-8 pb-12 overflow-hidden text-center">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#00f0ff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+        
+        <div class="mb-4 reveal">
+            <div class="wifi-radar"><div></div><div></div><div></div></div>
+            <p class="text-brand-neon text-xs font-bold mt-2 tracking-widest uppercase">Signal Booster</p>
+        </div>
+
+        <h1 class="font-headline text-4xl md:text-5xl leading-[1.3] mb-4 relative z-10 drop-shadow-2xl reveal">
+            الكونيكسيون ميتة في الشومبرة؟ <br>
+            <span class="gradient-text">اخترق حيوط البيطون وضاعف قوة الويفي!</span>
+        </h1>
+        
+        <p class="text-slate-300 text-base md:text-lg font-bold mb-8 max-w-2xl mx-auto leading-relaxed relative z-10 reveal">
+            تهنى من التقطاع تاع الماتشات في الـ IPTV واللاغ في الألعاب. ركب جهاز <strong>Aigital 300Mbps</strong> ووصل الكونيكسيون لكل زاوية في الدار كأنك لاصق في الموديم.
+        </p>
+
+        <!-- Product Presentation -->
+        <div class="relative max-w-sm mx-auto mb-10 z-10 reveal">
+            <div class="glass-panel p-6 relative">
+                <!-- صوة المنتج الرئيسي -->
+                <img src="https://m.media-amazon.com/images/I/513cVrhtHeL._AC_SL1500_.jpg" alt="WiFi Repeater" class="w-full h-64 object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]">
+                
+                <!-- Price Tag -->
+                <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-brand-dark text-white px-6 py-2 rounded-xl shadow-[0_10px_20px_rgba(0,240,255,0.2)] border border-brand-neon w-[85%] flex items-center justify-between z-20">
+                    <div class="text-right">
+                        <p class="text-[10px] font-bold text-slate-500 line-through">7500 دج</p>
+                        <p class="text-xs font-headline text-brand-danger">برومو اليوم</p>
+                    </div>
+                    <div class="flex items-end gap-1">
+                        <span class="font-headline text-3xl text-white">3900</span>
+                        <span class="text-brand-warning font-bold pb-1 text-xs">دج</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 font-bold mt-8">+ مصاريف التوصيل</p>
+        </div>
+
+        <a href="#order-form" class="btn-aggressive pulse-urgent text-white font-headline text-2xl md:text-3xl py-4 px-10 rounded-xl inline-flex items-center justify-center gap-3 w-full max-w-sm relative z-10 reveal">
+            عمر الاستمارة و أطلب درك 🛒
+        </a>
+    </header>
+
+    <!-- FEATURES -->
+    <section class="py-12 px-4 relative z-10 border-t border-white/5 bg-gradient-to-b from-brand-dark to-[#0a1220]">
+        <h2 class="font-headline text-3xl md:text-4xl text-center mb-10 reveal">علاش الناس قاع راهم يطيرو بيه؟</h2>
+        
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-5">
+            <div class="glass-panel p-5 flex gap-4 items-center reveal">
+                <div class="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/30 flex-shrink-0"><span class="text-2xl">🧱</span></div>
+                <div>
+                    <h3 class="font-headline text-xl mb-1 text-brand-neon">يفوت حيوط البيطون</h3>
+                    <p class="text-slate-400 text-sm font-bold leading-relaxed">السينيال قوي يفوت عبر الحيوط الغلاض. الموديم لتحت؟ الفوق تكونيكتي بـ 4 شلطات.</p>
+                </div>
+            </div>
+            <div class="glass-panel p-5 flex gap-4 items-center reveal">
+                <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/30 flex-shrink-0"><span class="text-2xl">⚡</span></div>
+                <div>
+                    <h3 class="font-headline text-xl mb-1 text-brand-danger">سرعة 300Mbps (زيرو لاغ)</h3>
+                    <p class="text-slate-400 text-sm font-bold leading-relaxed">تفرج الـ IPTV وقت الماتشات بلا تقطاع، والعب أونلاين بـ Ping هابط بزاف.</p>
+                </div>
+            </div>
+            <div class="glass-panel p-5 flex gap-4 items-center reveal">
+                <div class="w-16 h-16 rounded-full bg-yellow-500/10 flex items-center justify-center border border-yellow-500/30 flex-shrink-0"><span class="text-2xl">📱</span></div>
+                <div>
+                    <h3 class="font-headline text-xl mb-1 text-brand-warning">يمونطي الدار قاع</h3>
+                    <p class="text-slate-400 text-sm font-bold leading-relaxed">كونيكتي 30 تليفون، سمارت تيفي، وكاميرات في ضربة وحدة بلا ما يطيح الديبي.</p>
+                </div>
+            </div>
+            <div class="glass-panel p-5 flex gap-4 items-center reveal">
+                <div class="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30 flex-shrink-0"><span class="text-2xl">🎮</span></div>
+                <div>
+                    <h3 class="font-headline text-xl mb-1 text-emerald-400">فيه بورت RJ45 سبيسيال</h3>
+                    <p class="text-slate-400 text-sm font-bold leading-relaxed">ركب الكابل ديريكت للبيسي ولا البلايستيشن باش تدي كونيكسيون صافية 100%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTALLATION STEPS (Images 1, 2, 3 mapped here) -->
+    <section class="py-16 px-4 bg-brand-light relative border-t border-brand-primary/20">
+        <h2 class="font-headline text-3xl md:text-5xl text-center mb-4 relative z-10 reveal">تركيب ساهل في <span class="text-brand-accent">3 خطوات برك!</span></h2>
+        <p class="text-center text-slate-400 font-bold mb-12 relative z-10 reveal">بدون كوابل أو مبرمج.. طفل صغير يقدر يركبو في دقيقة.</p>
+        
+        <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 relative z-10">
+            <!-- Step 1 -->
+            <div class="glass-panel p-4 text-center reveal border-t-4 border-t-brand-primary relative overflow-hidden">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-primary text-white font-headline rounded-full flex items-center justify-center z-20">1</div>
+                <div class="w-full h-40 bg-slate-800 rounded-xl mb-4 overflow-hidden border-2 border-slate-700 relative">
+                    <!-- IMAGE 1 -->
+                    <img src="./step1.jpg" alt="" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
+                </div>
+                <h4 class="font-headline text-xl text-white mb-2">برونشيه في البريزة 🔌</h4>
+                <p class="text-sm text-slate-400 font-bold">في المرة الأولى، حطو في بريزة تكون قريبة للموديم تاعك باش تسينكرونيزيه.</p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="glass-panel p-4 text-center reveal border-t-4 border-t-brand-warning relative overflow-hidden transition-all delay-100">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-warning text-brand-dark font-headline rounded-full flex items-center justify-center z-20">2</div>
+                <div class="w-full h-40 bg-slate-800 rounded-xl mb-4 overflow-hidden border-2 border-slate-700 relative">
+                    <!-- IMAGE 2 -->
+                    <img src="./step2.jpg" alt="" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
+                </div>
+                <h4 class="font-headline text-xl text-white mb-2">عبّز قفلة الـ WPS 🔘</h4>
+                <p class="text-sm text-slate-400 font-bold">عبز قفلة WPS في الموديم، وممبعد عبز نفس القفلة في المقوي وخليهم يتكونيكتاو.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="glass-panel p-4 text-center reveal border-t-4 border-t-brand-accent relative overflow-hidden transition-all delay-200">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-accent text-white font-headline rounded-full flex items-center justify-center z-20">3</div>
+                <div class="w-full h-40 bg-slate-800 rounded-xl mb-4 overflow-hidden border-2 border-slate-700 relative">
+                    <!-- IMAGE 3 -->
+                    <img src="./step3.jpg" alt="" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
+                </div>
+                <h4 class="font-headline text-xl text-white mb-2">بدل بلاصتو وتمتع 🚀</h4>
+                <p class="text-sm text-slate-400 font-bold">كي يشعل الضو الأخضر، انقلو للنص طريق بين الموديم والشومبرة الميتة ومبروك عليك.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REALISTIC SOCIAL PROOF (WOW Glowing Text Cards) -->
+    <section class="py-16 px-4 bg-[#050b14] relative overflow-hidden border-y border-white/5">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="text-center mb-12 relative z-10 reveal">
+            <h2 class="font-headline text-3xl md:text-5xl text-white mb-3">واش قالو خاوتنا لي جربوه؟ 💬</h2>
+            <p class="text-slate-400 font-bold text-sm md:text-base">آراء حقيقية من زبائننا عبر 58 ولاية (بدون مجاملة)</p>
+        </div>
+        
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 relative z-10">
+            <!-- Review 1 -->
+            <div class="glow-card p-6 reveal">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-brand-primary/20 border border-brand-primary/50 flex items-center justify-center font-headline text-2xl text-brand-neon shadow-[0_0_15px_rgba(0,240,255,0.3)]">ع</div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">عبد الرؤوف. م</h4>
+                            <span class="text-slate-400 text-xs">من ولاية البليدة</span>
+                        </div>
+                    </div>
+                    <div class="bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[10px] px-2 py-1 rounded font-bold flex items-center gap-1">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        مشتري مؤكد
+                    </div>
+                </div>
+                <div class="flex gap-1 mb-3 text-brand-warning text-sm">⭐⭐⭐⭐⭐</div>
+                <p class="text-slate-300 text-sm font-bold leading-relaxed">
+                    "في الأول كنت حاسبها خرطي، بصح والله غير سلعة نقية! الموديم راهو لتحت والبيت تاعي الفوق مكانش يحكم قاع.. غير ركبت هاد الأباراي الكونيكسيون ولات 4 شلطات كاملين. يعطيكم الصحة."
+                </p>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="glow-card p-6 reveal transition-all delay-100">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-brand-accent/20 border border-brand-accent/50 flex items-center justify-center font-headline text-2xl text-brand-accent shadow-[0_0_15px_rgba(16,185,129,0.3)]">ي</div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">ياسين. س</h4>
+                            <span class="text-slate-400 text-xs">من ولاية سطيف</span>
+                        </div>
+                    </div>
+                    <div class="bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[10px] px-2 py-1 rounded font-bold flex items-center gap-1">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        مشتري مؤكد
+                    </div>
+                </div>
+                <div class="flex gap-1 mb-3 text-brand-warning text-sm">⭐⭐⭐⭐⭐</div>
+                <p class="text-slate-300 text-sm font-bold leading-relaxed">
+                    "لي يتفرج لي ماتش في الـ IPTV ولا يلعب أونلاين يديها وعينيه مغمضين. ركبتها بالكابل RJ45 ديريكت في البلايستيشن، الـ Ping هبط للزيرو والتقطاع راح. التوصيل كان سريع وصلني في نهارين برك."
+                </p>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="glow-card p-6 reveal transition-all delay-200">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-brand-warning/20 border border-brand-warning/50 flex items-center justify-center font-headline text-2xl text-brand-warning shadow-[0_0_15px_rgba(255,193,7,0.3)]">ف</div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">فريد. ب</h4>
+                            <span class="text-slate-400 text-xs">من ولاية وهران</span>
+                        </div>
+                    </div>
+                    <div class="bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[10px] px-2 py-1 rounded font-bold flex items-center gap-1">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        مشتري مؤكد
+                    </div>
+                </div>
+                <div class="flex gap-1 mb-3 text-brand-warning text-sm">⭐⭐⭐⭐⭐</div>
+                <p class="text-slate-300 text-sm font-bold leading-relaxed">
+                    "ديت الباك تاع زوج حبات على جال الدار كبيرة (طابقين)، والله غير هناتني! ركبت وحدة في الدوزيام ووحدة في الطروازيام، درك الدار قاع فيها الويفي طيارة. شكرا على التوصيل المجاني لي درتوهلي."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ELITE CHECKOUT FORM (Aggressive & Anti-RTS) -->
+    <section id="order-form" class="py-12 px-4 relative z-10 bg-brand-dark border-t border-brand-primary/20">
+        <div class="max-w-xl mx-auto glass-panel p-5 md:p-8 border-t-4 border-t-brand-danger shadow-[0_0_30px_rgba(255,42,42,0.1)] relative reveal">
+            
+            <div class="text-center mb-6">
+                <h2 class="font-headline text-3xl md:text-4xl text-white mb-2">عمر معلوماتك هنا 👇</h2>
+                <p class="text-slate-400 text-sm font-bold">يرجى ملء الاستمارة بدقة لضمان وصول المنتج في أقرب وقت</p>
+            </div>
+
+            <form id="purchaseForm" class="space-y-5">
+                
+                <!-- DYNAMIC UPSELL STRATEGY -->
+                <div class="bg-black/50 p-3 rounded-xl border border-slate-700">
+                    <p class="text-white font-headline text-lg mb-3 text-center">🔥 خير العرض لي يوالمك:</p>
+                    
+                    <label class="flex items-center justify-between p-3 border border-slate-600 rounded-xl mb-3 cursor-pointer hover:border-brand-primary bg-slate-800/30" id="label-pack1">
+                        <div class="flex items-center gap-3">
+                            <input type="radio" name="pack" value="1" data-price="3900" checked class="w-5 h-5 accent-brand-primary">
+                            <div>
+                                <span class="text-white font-bold text-sm block">جهاز واحد (1x)</span>
+                                <span class="text-slate-400 text-[10px] font-bold">+ مصاريف التوصيل</span>
+                            </div>
+                        </div>
+                        <span class="text-white font-headline text-xl">3900 دج</span>
+                    </label>
+                    
+                    <label class="flex items-center justify-between p-3 border-2 border-brand-warning rounded-xl cursor-pointer bg-brand-warning/10 relative overflow-hidden" id="label-pack2">
+                        <div class="absolute top-0 right-0 bg-brand-warning text-brand-dark text-[10px] font-black px-2 py-0.5 rounded-bl-xl">للديار الكبار (طابقين)</div>
+                        <div class="flex items-center gap-3 mt-3">
+                            <input type="radio" name="pack" value="2" data-price="7200" class="w-5 h-5 accent-brand-warning">
+                            <div>
+                                <span class="text-brand-warning font-black text-sm block">باك 2 أجهزة (2x)</span>
+                                <span class="bg-brand-danger text-white text-[9px] px-2 py-0.5 rounded font-bold">توصيل مجاني 🚚</span>
+                            </div>
+                        </div>
+                        <div class="text-left mt-3">
+                            <span class="text-slate-400 line-through text-[10px] block font-bold">7800 دج</span>
+                            <span class="text-brand-warning font-headline text-2xl block">7200 دج</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Personal Info Inputs -->
+                <div class="space-y-4">
+                    <input type="text" name="name" required placeholder="الاسم واللقب *" class="w-full bg-[#0a1220] border border-slate-600 rounded-xl px-4 py-3 text-white focus:border-brand-primary outline-none font-bold text-sm placeholder-slate-500">
+                    <input type="tel" name="phone" required placeholder="رقم الهاتف: 05/06/07 *" dir="ltr" class="w-full text-left bg-[#0a1220] border border-slate-600 rounded-xl px-4 py-3 text-white focus:border-brand-primary outline-none font-bold text-lg placeholder-slate-500 tracking-wider" pattern="^(05|06|07)[0-9]{8}$" title="رقم هاتف جزائري صحيح (10 أرقام)">
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <select name="wilaya" required class="w-full bg-[#0a1220] border border-slate-600 rounded-xl px-3 py-3 text-white focus:border-brand-primary outline-none font-bold text-sm appearance-none">
+                            <option value="" disabled selected>الولاية *</option>
+                            <option value="16">16 - الجزائر</option>
+                            <option value="31">31 - وهران</option>
+                            <option value="25">25 - قسنطينة</option>
+                            <option value="19">19 - سطيف</option>
+                            <option value="09">09 - البليدة</option>
+                            <option value="other">ولاية أخرى...</option>
+                        </select>
+                        <input type="text" name="commune" required placeholder="البلدية *" class="w-full bg-[#0a1220] border border-slate-600 rounded-xl px-3 py-3 text-white focus:border-brand-primary outline-none font-bold text-sm">
+                    </div>
+                </div>
+
+                <!-- ANTI-RTS CHECKBOX -->
+                <div class="mt-4 p-3 bg-brand-danger/10 border border-brand-danger/50 rounded-lg">
+                    <label class="checkbox-wrapper flex items-start gap-3 cursor-pointer select-none">
+                        <div class="relative flex items-center justify-center mt-0.5 flex-shrink-0">
+                            <input type="checkbox" id="commitment" required class="opacity-0 absolute h-0 w-0">
+                            <div class="w-5 h-5 border-2 border-brand-danger rounded flex items-center justify-center transition-colors bg-brand-dark">
+                                <svg class="w-3 h-3 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                        </div>
+                        <span class="text-white text-[13px] font-bold leading-tight">
+                            <strong class="text-brand-danger">تعهد إلزامي:</strong>
+                            أؤكد أنني سأرد على اتصال التأكيد، وأتعهد باستلام طلبيتي ودفع <span id="text-price-display" class="text-brand-warning font-black">3900 دج</span> لمندوب التوصيل.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn" class="btn-aggressive pulse-urgent w-full text-white font-headline text-2xl py-4 rounded-xl mt-2 flex justify-center items-center gap-3">
+                    <span>أكّد الطلب الآن</span>
+                    <span id="btn-price-display" class="bg-black/30 px-2 py-1 rounded-lg text-xl border border-white/20">3900 دج</span>
+                </button>
+                
+                <div class="text-center mt-3 flex justify-center items-center gap-4 text-xs text-slate-300 font-bold bg-black/30 py-2 rounded-lg">
+                    <span class="flex items-center gap-1"><svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> الدفع عند الاستلام</span>
+                    <span class="flex items-center gap-1"><svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> معلوماتك آمنة</span>
+                </div>
+            </form>
+
+            <!-- Success Message -->
+            <div id="successMsg" class="hidden text-center py-8 relative">
+                <div class="w-20 h-20 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4 shadow-[0_0_30px_rgba(16,185,129,0.8)] border-4 border-white">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="font-headline text-3xl text-white mb-2">تم تسجيل طلبك بنجاح! 🚀</h3>
+                <p class="text-brand-neon font-bold text-sm mb-4">يعطيك الصحة على ثقتك فينا.</p>
+                <div class="bg-black/50 p-4 rounded-xl border border-brand-warning text-sm font-bold text-white leading-relaxed">
+                    ⚠️ يرجى إبقاء هاتفك مفتوحاً. فريقنا راح يعيطلك من رقم (05/06/07) لتأكيد عنوان الشحن.<br> <span class="text-brand-warning">عدم الرد يعني إلغاء الطلبية.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+        // GOOGLE SCRIPT URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwBBFuHmwCbK5S1R4wrg9j2Memsi5XtHXmy6ETXFGFkmnBBlTTmGcHskyhYPH2vX4V3hw/exec';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // SCROLL REVEALS
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); }});
+            }, { threshold: 0.1 });
+            reveals.forEach(reveal => observer.observe(reveal));
+
+            // DYNAMIC PRICING
+            const radioButtons = document.querySelectorAll('input[name="pack"]');
+            const priceDisplays = [document.getElementById('btn-price-display'), document.getElementById('text-price-display')];
+            const labelPack1 = document.getElementById('label-pack1');
+            const labelPack2 = document.getElementById('label-pack2');
+
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const price = e.target.getAttribute('data-price');
+                    priceDisplays.forEach(el => el.textContent = price + ' دج');
+                    
+                    if(e.target.value === '1') {
+                        labelPack1.classList.add('border-brand-primary', 'bg-slate-800/30');
+                        labelPack1.classList.remove('border-slate-600');
+                        labelPack2.classList.remove('border-brand-warning');
+                        labelPack2.classList.add('border-slate-600');
+                    } else {
+                        labelPack2.classList.add('border-brand-warning');
+                        labelPack2.classList.remove('border-slate-600');
+                        labelPack1.classList.remove('border-brand-primary', 'bg-slate-800/30');
+                        labelPack1.classList.add('border-slate-600');
+                    }
+                });
+            });
+
+            // LIVE NOTIFICATIONS
+            const names = ["أمين", "ياسين", "فاطمة", "خالد", "سفيان", "عبد الرؤوف", "مريم", "حمزة"];
+            const cities = ["سطيف", "العاصمة", "وهران", "عنابة", "البليدة", "قسنطينة", "تلمسان", "بجاية"];
+            const notifEl = document.getElementById('live-notification');
+            const bName = document.getElementById('buyer-name');
+            const bCity = document.getElementById('buyer-city');
+
+            function triggerNotification() {
+                bName.textContent = names[Math.floor(Math.random() * names.length)];
+                bCity.textContent = cities[Math.floor(Math.random() * cities.length)];
+                notifEl.classList.add('show');
+                setTimeout(() => { notifEl.classList.remove('show'); }, 4000);
+            }
+            setTimeout(() => { triggerNotification(); setInterval(triggerNotification, Math.floor(Math.random() * (12000 - 8000) + 8000)); }, 3000);
+
+            // FORM SUBMISSION TO GOOGLE SHEETS
+            const form = document.getElementById('purchaseForm');
+            const successMsg = document.getElementById('successMsg');
+            const submitBtn = document.getElementById('submitBtn');
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                submitBtn.innerHTML = '<span class="font-headline">جاري التأكيد... ⏳</span>';
+                submitBtn.disabled = true;
+                submitBtn.classList.remove('btn-aggressive', 'pulse-urgent');
+                submitBtn.classList.add('bg-slate-700', 'cursor-not-allowed');
+
+                let formData = new FormData(form);
+                
+                fetch(scriptURL, { method: 'POST', body: formData})
+                    .then(response => {
+                        form.style.display = 'none';
+                        successMsg.classList.remove('hidden');
+                        window.scrollTo({ top: document.getElementById('order-form').offsetTop, behavior: 'smooth' });
+                        
+                        // PIXEL EVENTS ON SUCCESS
+                        if(typeof fbq !== 'undefined') { fbq('track', 'Purchase', { value: formData.get('pack') === '2' ? 7200 : 3900, currency: 'DZD' }); }
+                        if(typeof ttq !== 'undefined') { ttq.track('CompletePayment', { value: formData.get('pack') === '2' ? 7200 : 3900, currency: 'DZD' }); }
+                    })
+                    .catch(error => {
+                        alert('حدث خطأ في الاتصال! يرجى إعادة المحاولة.');
+                        submitBtn.innerHTML = '<span>أكّد الطلب الآن</span>';
+                        submitBtn.disabled = false;
+                        submitBtn.classList.add('btn-aggressive', 'pulse-urgent');
+                        submitBtn.classList.remove('bg-slate-700', 'cursor-not-allowed');
+                    });
+            });
+
+            // RANDOM STOCK DEPLETION
+            let stock = 11;
+            const stockDisplay = document.getElementById('stock-count');
+            setInterval(() => {
+                if (stock > 3 && Math.random() > 0.6) {
+                    stock--;
+                    stockDisplay.textContent = stock;
+                    stockDisplay.classList.add('text-white', 'scale-125');
+                    setTimeout(() => stockDisplay.classList.remove('text-white', 'scale-125'), 300);
+                }
+            }, 8000);
+        });
+    </script>
+</body>
+</html>
