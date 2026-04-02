@@ -87,6 +87,10 @@
         /* Fake Live Notifications */
         #live-notification { position: fixed; top: 20px; right: -400px; background: rgba(15, 28, 46, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(16, 185, 129, 0.3); border-right: 4px solid #10b981; padding: 12px 16px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; z-index: 9999; transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); max-width: 90vw; }
         #live-notification.show { right: 20px; }
+
+        /* Floating WOW CTA Animation */
+        @keyframes bounce-x { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-5px); } }
+        .animate-bounce-x { animation: bounce-x 1s infinite; }
     </style>
 </head>
 <body class="antialiased pb-24 selection:bg-brand-neon selection:text-brand-dark">
@@ -147,7 +151,9 @@
                     </div>
                 </div>
             </div>
-            <p class="text-xs text-slate-400 font-bold mt-8">+ مصاريف التوصيل</p>
+            <p class="text-xs text-slate-300 font-bold mt-8 bg-brand-dark/50 inline-block px-4 py-2 rounded-full border border-slate-700">
+                + مصاريف التوصيل بين <span class="text-brand-neon">600 دج</span> و <span class="text-brand-neon">900 دج</span> حسب الولاية وشركة التوصيل
+            </p>
         </div>
 
         <a href="#order-form" class="btn-aggressive pulse-urgent text-white font-headline text-2xl md:text-3xl py-4 px-10 rounded-xl inline-flex items-center justify-center gap-3 w-full max-w-sm relative z-10 reveal">
@@ -202,7 +208,7 @@
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-primary text-white font-headline rounded-full flex items-center justify-center z-20">1</div>
                 <div class="w-full h-40 bg-slate-800 rounded-xl mb-4 overflow-hidden border-2 border-slate-700 relative">
                     <!-- IMAGE 1 -->
-                    <img src="./step1.jpg" alt="" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
+                    <img src="./step1.jpg" alt="تركيب الجهاز في البريزة" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
                 </div>
                 <h4 class="font-headline text-xl text-white mb-2">برونشيه في البريزة 🔌</h4>
@@ -214,7 +220,7 @@
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-warning text-brand-dark font-headline rounded-full flex items-center justify-center z-20">2</div>
                 <div class="w-full h-40 bg-slate-800 rounded-xl mb-4 overflow-hidden border-2 border-slate-700 relative">
                     <!-- IMAGE 2 -->
-                    <img src="./step2.jpg" alt="" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
+                    <img src="./step2.jpg" alt="زر WPS" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
                 </div>
                 <h4 class="font-headline text-xl text-white mb-2">عبّز قفلة الـ WPS 🔘</h4>
@@ -226,7 +232,7 @@
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-accent text-white font-headline rounded-full flex items-center justify-center z-20">3</div>
                 <div class="w-full h-40 bg-slate-800 rounded-xl mb-4 overflow-hidden border-2 border-slate-700 relative">
                     <!-- IMAGE 3 -->
-                    <img src="./step3.jpg" alt="" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
+                    <img src="./step3.jpg" alt="ضوء أخضر قوي" class="w-full h-full object-cover opacity-80 hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
                 </div>
                 <h4 class="font-headline text-xl text-white mb-2">بدل بلاصتو وتمتع 🚀</h4>
@@ -312,7 +318,7 @@
     </section>
 
     <!-- ELITE CHECKOUT FORM (Aggressive & Anti-RTS) -->
-    <section id="order-form" class="py-12 px-4 relative z-10 bg-brand-dark border-t border-brand-primary/20">
+    <section id="order-form" class="py-12 px-4 relative z-10 bg-brand-dark border-t border-brand-primary/20 scroll-mt-20">
         <div class="max-w-xl mx-auto glass-panel p-5 md:p-8 border-t-4 border-t-brand-danger shadow-[0_0_30px_rgba(255,42,42,0.1)] relative reveal">
             
             <div class="text-center mb-6">
@@ -321,6 +327,10 @@
             </div>
 
             <form id="purchaseForm" class="space-y-5">
+                
+                <!-- HIDDEN INPUTS FOR GOOGLE SHEETS (اسم المنتج والسعر الإجمالي) -->
+                <input type="hidden" name="product" id="input_product" value="مقوي الويفي الأصلي - 1 قطعة">
+                <input type="hidden" name="total_price" id="input_total_price" value="3900">
                 
                 <!-- DYNAMIC UPSELL STRATEGY -->
                 <div class="bg-black/50 p-3 rounded-xl border border-slate-700">
@@ -331,7 +341,7 @@
                             <input type="radio" name="pack" value="1" data-price="3900" checked class="w-5 h-5 accent-brand-primary">
                             <div>
                                 <span class="text-white font-bold text-sm block">جهاز واحد (1x)</span>
-                                <span class="text-slate-400 text-[10px] font-bold">+ مصاريف التوصيل</span>
+                                <span class="text-slate-400 text-[10px] font-bold">+ التوصيل 600 دج إلى 900 دج</span>
                             </div>
                         </div>
                         <span class="text-white font-headline text-xl">3900 دج</span>
@@ -343,7 +353,7 @@
                             <input type="radio" name="pack" value="2" data-price="7200" class="w-5 h-5 accent-brand-warning">
                             <div>
                                 <span class="text-brand-warning font-black text-sm block">باك 2 أجهزة (2x)</span>
-                                <span class="bg-brand-danger text-white text-[9px] px-2 py-0.5 rounded font-bold">توصيل مجاني 🚚</span>
+                                <span class="bg-brand-danger text-white text-[9px] px-2 py-0.5 rounded font-bold animate-pulse">توصيل مجاني 🚚</span>
                             </div>
                         </div>
                         <div class="text-left mt-3">
@@ -359,16 +369,85 @@
                     <input type="tel" name="phone" required placeholder="رقم الهاتف: 05/06/07 *" dir="ltr" class="w-full text-left bg-[#0a1220] border border-slate-600 rounded-xl px-4 py-3 text-white focus:border-brand-primary outline-none font-bold text-lg placeholder-slate-500 tracking-wider" pattern="^(05|06|07)[0-9]{8}$" title="رقم هاتف جزائري صحيح (10 أرقام)">
 
                     <div class="grid grid-cols-2 gap-3">
-                        <select name="wilaya" required class="w-full bg-[#0a1220] border border-slate-600 rounded-xl px-3 py-3 text-white focus:border-brand-primary outline-none font-bold text-sm appearance-none">
+                        <select name="wilaya" id="wilaya-select" required class="w-full bg-[#0a1220] border border-slate-600 rounded-xl px-3 py-3 text-white focus:border-brand-primary outline-none font-bold text-sm appearance-none">
                             <option value="" disabled selected>الولاية *</option>
-                            <option value="16">16 - الجزائر</option>
-                            <option value="31">31 - وهران</option>
-                            <option value="25">25 - قسنطينة</option>
-                            <option value="19">19 - سطيف</option>
-                            <option value="09">09 - البليدة</option>
-                            <option value="other">ولاية أخرى...</option>
+                            <option value="1" data-liv="900">01 - أدرار</option>
+                            <option value="2" data-liv="600">02 - الشلف</option>
+                            <option value="3" data-liv="900">03 - الأغواط</option>
+                            <option value="4" data-liv="600">04 - أم البواقي</option>
+                            <option value="5" data-liv="600">05 - باتنة</option>
+                            <option value="6" data-liv="600">06 - بجاية</option>
+                            <option value="7" data-liv="900">07 - بسكرة</option>
+                            <option value="8" data-liv="900">08 - بشار</option>
+                            <option value="9" data-liv="500">09 - البليدة</option>
+                            <option value="10" data-liv="600">10 - البويرة</option>
+                            <option value="11" data-liv="900">11 - تمنراست</option>
+                            <option value="12" data-liv="600">12 - تبسة</option>
+                            <option value="13" data-liv="600">13 - تلمسان</option>
+                            <option value="14" data-liv="600">14 - تيارت</option>
+                            <option value="15" data-liv="600">15 - تيزي وزو</option>
+                            <option value="16" data-liv="400">16 - الجزائر</option>
+                            <option value="17" data-liv="900">17 - الجلفة</option>
+                            <option value="18" data-liv="600">18 - جيجل</option>
+                            <option value="19" data-liv="600">19 - سطيف</option>
+                            <option value="20" data-liv="600">20 - سعيدة</option>
+                            <option value="21" data-liv="600">21 - سكيكدة</option>
+                            <option value="22" data-liv="600">22 - سيدي بلعباس</option>
+                            <option value="23" data-liv="600">23 - عنابة</option>
+                            <option value="24" data-liv="600">24 - قالمة</option>
+                            <option value="25" data-liv="600">25 - قسنطينة</option>
+                            <option value="26" data-liv="600">26 - المدية</option>
+                            <option value="27" data-liv="600">27 - مستغانم</option>
+                            <option value="28" data-liv="600">28 - المسيلة</option>
+                            <option value="29" data-liv="600">29 - معسكر</option>
+                            <option value="30" data-liv="900">30 - ورقلة</option>
+                            <option value="31" data-liv="600">31 - وهران</option>
+                            <option value="32" data-liv="900">32 - البيض</option>
+                            <option value="33" data-liv="900">33 - إليزي</option>
+                            <option value="34" data-liv="600">34 - برج بوعريريج</option>
+                            <option value="35" data-liv="500">35 - بومرداس</option>
+                            <option value="36" data-liv="600">36 - الطارف</option>
+                            <option value="37" data-liv="900">37 - تندوف</option>
+                            <option value="38" data-liv="600">38 - تسمسيلت</option>
+                            <option value="39" data-liv="900">39 - الوادي</option>
+                            <option value="40" data-liv="600">40 - خنشلة</option>
+                            <option value="41" data-liv="600">41 - سوق أهراس</option>
+                            <option value="42" data-liv="500">42 - تيبازة</option>
+                            <option value="43" data-liv="600">43 - ميلة</option>
+                            <option value="44" data-liv="600">44 - عين الدفلى</option>
+                            <option value="45" data-liv="900">45 - النعامة</option>
+                            <option value="46" data-liv="600">46 - عين تموشنت</option>
+                            <option value="47" data-liv="900">47 - غرداية</option>
+                            <option value="48" data-liv="600">48 - غليزان</option>
+                            <option value="49" data-liv="900">49 - تيميمون</option>
+                            <option value="50" data-liv="900">50 - برج باجي مختار</option>
+                            <option value="51" data-liv="900">51 - أولاد جلال</option>
+                            <option value="52" data-liv="900">52 - بني عباس</option>
+                            <option value="53" data-liv="900">53 - إن صالح</option>
+                            <option value="54" data-liv="900">54 - إن قزام</option>
+                            <option value="55" data-liv="900">55 - تقرت</option>
+                            <option value="56" data-liv="900">56 - جانت</option>
+                            <option value="57" data-liv="900">57 - المغير</option>
+                            <option value="58" data-liv="900">58 - المنيعة</option>
                         </select>
                         <input type="text" name="commune" required placeholder="البلدية *" class="w-full bg-[#0a1220] border border-slate-600 rounded-xl px-3 py-3 text-white focus:border-brand-primary outline-none font-bold text-sm">
+                    </div>
+                </div>
+
+                <!-- DYNAMIC ORDER SUMMARY (WOW ANIMATION) -->
+                <div class="mt-4 p-4 bg-brand-dark/80 border border-brand-neon/30 rounded-xl shadow-[0_0_15px_rgba(0,240,255,0.1)] transition-all">
+                    <h4 class="text-white font-headline text-lg mb-3 border-b border-slate-700 pb-2">🧾 تفاصيل الفاتورة</h4>
+                    <div class="flex justify-between text-slate-300 text-sm mb-2">
+                        <span>سعر المنتج:</span>
+                        <span id="summary-product-price" class="font-bold text-white">3900 دج</span>
+                    </div>
+                    <div class="flex justify-between text-slate-300 text-sm mb-3">
+                        <span>مصاريف التوصيل:</span>
+                        <span id="summary-delivery-price" class="font-bold text-brand-warning text-xs">الرجاء اختيار الولاية</span>
+                    </div>
+                    <div class="flex justify-between text-white text-xl font-headline pt-3 border-t border-slate-700">
+                        <span>المجموع الكلي:</span>
+                        <span id="summary-total-price" class="text-brand-neon drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]">3900 دج</span>
                     </div>
                 </div>
 
@@ -414,6 +493,18 @@
         </div>
     </section>
 
+    <!-- FLOATING STICKY CTA (WOW ANIMATION) -->
+    <div id="sticky-cta" class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-sm glass-panel p-2 flex items-center justify-between z-[100] translate-y-[150%] transition-transform duration-500 border border-brand-neon/50 shadow-[0_0_40px_rgba(0,240,255,0.2)]">
+        <div class="flex flex-col px-3">
+            <span id="sticky-price" class="text-white font-headline text-2xl leading-none">3900 دج</span>
+            <span id="sticky-delivery" class="text-brand-warning text-[10px] font-bold">التوصيل 600-900 دج</span>
+        </div>
+        <a href="#order-form" class="bg-gradient-to-r from-brand-danger to-red-700 text-white font-headline text-xl px-6 py-3 rounded-xl shadow-[0_0_15px_rgba(255,42,42,0.6)] flex items-center gap-2 pulse-urgent transform hover:scale-105 transition-transform">
+            أطلب الآن
+            <svg class="w-5 h-5 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        </a>
+    </div>
+
     <!-- Scripts -->
     <script>
         // GOOGLE SCRIPT URL
@@ -427,29 +518,97 @@
             }, { threshold: 0.1 });
             reveals.forEach(reveal => observer.observe(reveal));
 
-            // DYNAMIC PRICING
+            // DYNAMIC PRICING, DELIVERY CALCULATION & GOOGLE SHEETS UPDATE
             const radioButtons = document.querySelectorAll('input[name="pack"]');
+            const wilayaSelect = document.getElementById('wilaya-select');
+            
             const priceDisplays = [document.getElementById('btn-price-display'), document.getElementById('text-price-display')];
             const labelPack1 = document.getElementById('label-pack1');
             const labelPack2 = document.getElementById('label-pack2');
+            
+            const summaryProductPrice = document.getElementById('summary-product-price');
+            const summaryDeliveryPrice = document.getElementById('summary-delivery-price');
+            const summaryTotalPrice = document.getElementById('summary-total-price');
+            
+            const inputProduct = document.getElementById('input_product');
+            const inputTotalPrice = document.getElementById('input_total_price');
+            const stickyPrice = document.getElementById('sticky-price');
+            const stickyDelivery = document.getElementById('sticky-delivery');
 
-            radioButtons.forEach(radio => {
-                radio.addEventListener('change', (e) => {
-                    const price = e.target.getAttribute('data-price');
-                    priceDisplays.forEach(el => el.textContent = price + ' دج');
-                    
-                    if(e.target.value === '1') {
-                        labelPack1.classList.add('border-brand-primary', 'bg-slate-800/30');
-                        labelPack1.classList.remove('border-slate-600');
-                        labelPack2.classList.remove('border-brand-warning');
-                        labelPack2.classList.add('border-slate-600');
-                    } else {
-                        labelPack2.classList.add('border-brand-warning');
-                        labelPack2.classList.remove('border-slate-600');
-                        labelPack1.classList.remove('border-brand-primary', 'bg-slate-800/30');
-                        labelPack1.classList.add('border-slate-600');
-                    }
-                });
+            function updatePricing() {
+                const selectedPack = document.querySelector('input[name="pack"]:checked');
+                const basePrice = parseInt(selectedPack.getAttribute('data-price'));
+                const isFreeDelivery = selectedPack.value === '2';
+                
+                // Get delivery fee for selected wilaya
+                let deliveryFee = 0;
+                if (wilayaSelect.value !== "") {
+                    const selectedOption = wilayaSelect.options[wilayaSelect.selectedIndex];
+                    deliveryFee = parseInt(selectedOption.getAttribute('data-liv')) || 600;
+                }
+
+                // Calculate total
+                let finalDeliveryFee = isFreeDelivery ? 0 : deliveryFee;
+                let totalPrice = basePrice + finalDeliveryFee;
+
+                // Update UI visually based on Pack
+                if(selectedPack.value === '1') {
+                    labelPack1.classList.add('border-brand-primary', 'bg-slate-800/30');
+                    labelPack1.classList.remove('border-slate-600');
+                    labelPack2.classList.remove('border-brand-warning');
+                    labelPack2.classList.add('border-slate-600');
+                    inputProduct.value = "مقوي الويفي الأصلي - 1 قطعة";
+                } else {
+                    labelPack2.classList.add('border-brand-warning');
+                    labelPack2.classList.remove('border-slate-600');
+                    labelPack1.classList.remove('border-brand-primary', 'bg-slate-800/30');
+                    labelPack1.classList.add('border-slate-600');
+                    inputProduct.value = "مقوي الويفي الأصلي - باك 2 قطع";
+                }
+
+                // Update Summary Box
+                summaryProductPrice.textContent = basePrice + ' دج';
+                
+                if (wilayaSelect.value === "") {
+                    summaryDeliveryPrice.textContent = isFreeDelivery ? 'مجاني 🚚' : 'الرجاء اختيار الولاية';
+                    summaryDeliveryPrice.className = isFreeDelivery ? 'font-bold text-emerald-400 text-sm animate-pulse' : 'font-bold text-brand-warning text-xs';
+                } else {
+                    summaryDeliveryPrice.textContent = isFreeDelivery ? 'مجاني 🚚' : finalDeliveryFee + ' دج';
+                    summaryDeliveryPrice.className = isFreeDelivery ? 'font-bold text-emerald-400 text-sm animate-pulse' : 'font-bold text-brand-warning text-sm';
+                }
+                
+                summaryTotalPrice.textContent = totalPrice + ' دج';
+                inputTotalPrice.value = totalPrice;
+
+                // Update Buttons & Sticky CTA
+                priceDisplays.forEach(el => el.textContent = totalPrice + ' دج');
+                stickyPrice.textContent = totalPrice + ' دج';
+                
+                if(isFreeDelivery) {
+                    stickyDelivery.textContent = 'توصيل مجاني 🚚';
+                } else if (wilayaSelect.value !== "") {
+                    stickyDelivery.textContent = 'التوصيل: ' + finalDeliveryFee + ' دج';
+                } else {
+                    stickyDelivery.textContent = 'التوصيل 600-900 دج';
+                }
+            }
+
+            // Attach event listeners for dynamic updates
+            radioButtons.forEach(radio => radio.addEventListener('change', updatePricing));
+            wilayaSelect.addEventListener('change', updatePricing);
+
+            // FLOATING STICKY CTA LOGIC
+            const stickyCta = document.getElementById('sticky-cta');
+            const formSection = document.getElementById('order-form');
+            
+            window.addEventListener('scroll', () => {
+                const formRect = formSection.getBoundingClientRect();
+                // Show sticky CTA if scrolled past 400px AND the form is not yet fully in view
+                if (window.scrollY > 400 && formRect.top > window.innerHeight - 100) {
+                    stickyCta.style.transform = 'translate(-50%, 0)';
+                } else {
+                    stickyCta.style.transform = 'translate(-50%, 150%)'; // Hide it
+                }
             });
 
             // LIVE NOTIFICATIONS
