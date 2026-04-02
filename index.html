@@ -518,6 +518,10 @@
                 submitBtn.classList.add('bg-slate-700', 'cursor-not-allowed');
 
                 let formData = new FormData(form);
+
+// 🔥 إجبار إرسال السعر الإجمالي واسم المنتج أوتوماتيكياً (Force Send)
+formData.set('total_price', document.getElementById('input_total_price').value);
+formData.set('product', document.getElementById('input_product').value);
                 
                 // 1. Send data to Google Sheets in the background (Fire and Forget)
                 fetch(scriptURL, { method: 'POST', body: formData})
